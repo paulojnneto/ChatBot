@@ -318,3 +318,4 @@ C:\Dev\HCapital\ChatBot\api\obj\Debug\net8.0\refint\ChatbotAPI.dll
 C:\Dev\HCapital\ChatBot\api\obj\Debug\net8.0\ChatbotAPI.pdb
 C:\Dev\HCapital\ChatBot\api\obj\Debug\net8.0\ChatbotAPI.genruntimeconfig.cache
 C:\Dev\HCapital\ChatBot\api\obj\Debug\net8.0\ref\ChatbotAPI.dll
+C:\Dev\HCapital\ChatBot\api\obj\Debug\net8.0\ChatbotAPI.sourcelink.json
