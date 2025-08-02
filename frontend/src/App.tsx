@@ -38,15 +38,15 @@ function App() {
             </Button>
           </Link>
         </HStack>
+      </Box>
 
-        <Box paddingTop="80px">
-          <Container maxW="container.md">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<ChatView />} />
-            </Routes>
-          </Container>
-        </Box>
+      <Box paddingTop="80px">
+        <Container maxW="container.md">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<ChatView />} />
+          </Routes>
+        </Container>
       </Box>
     </Box>
   );
