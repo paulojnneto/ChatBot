@@ -1,67 +1,27 @@
-import { useEffect, useState } from 'react';
-import { api } from '../services/api';
-
-interface Bot {
-  id: number;
-  name: string;
-  context: string;
-}
-
-interface Message {
-  id: number;
-  userMessage: string;
-  botResponse: string;
-  timestamp: string;
-}
+import { useChatBot } from '../hooks/useChatBot';
 
 export const ChatView = () => {
-  const [bots, setBots] = useState<Bot[]>([]);
-  const [selectedBotId, setSelectedBotId] = useState<number | null>(null);
-  const [message, setMessage] = useState('');
-  const [history, setHistory] = useState<Message[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    api.get('/Bot').then(res => setBots(res.data));
-  }, []);
-
-  const fetchMessages = (botId: number) => {
-    api.get(`/Message/${botId}`).then(res => setHistory(res.data));
-  };
-
-  const handleSend = async () => {
-    if (!selectedBotId || !message.trim()) return;
-    setLoading(true);
-    try {
-      const res = await api.post('/Message', {
-        botId: selectedBotId,
-        userMessage: message
-      });
-      console.log({ res });
-      setMessage('');
-      fetchMessages(selectedBotId);
-    } catch (err) {
-      console.log({ err });
-
-      alert('Erro ao enviar mensagem');
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    bots,
+    selectedBotId,
+    handleBotSelect,
+    message,
+    setMessage,
+    history,
+    handleSend,
+    loading
+  } = useChatBot();
 
   return (
     <div style={{ maxWidth: 600, margin: 'auto' }}>
       <h2>Chatbot</h2>
 
       <select
-        onChange={(e) => {
-          const botId = parseInt(e.target.value);
-          setSelectedBotId(botId);
-          fetchMessages(botId);
-        }}
+        onChange={(e) => handleBotSelect(parseInt(e.target.value))}
         value={selectedBotId || ''}
+        className='font-bold'
       >
-        <option value="" disabled>Selecione um bot</option>
+        <option value="" disabled >Selecione um bot</option>
         {bots.map(bot => (
           <option key={bot.id} value={bot.id}>{bot.name}</option>
         ))}
