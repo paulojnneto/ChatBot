@@ -27,7 +27,7 @@ export default function ChatPage() {
   const [selectedBotId, setSelectedBotId] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
   const [newBotName, setNewBotName] = useState('');
   const [newBotContext, setNewBotContext] = useState('');
 
@@ -74,7 +74,7 @@ export default function ChatPage() {
               {bot.name}
             </Button>
           ))}
-          <Button variant="ghost" colorPalette="teal" onClick={onOpen} loading={creatingBot}>
+          <Button onClick={onOpen} variant="ghost" colorPalette="teal" loading={creatingBot}>
             + New Bot
           </Button>
         </VStack>
@@ -82,18 +82,26 @@ export default function ChatPage() {
 
       {/* Chat container */}
       <Flex flex="1" h="100vh" direction="column" bg="gray.900">
-        {/* Chat messages (scrollable) */}
         <Box flex="1" overflowY="auto" p={4}>
           {selectedBotId ? (
             <VStack align="stretch">
               {history.map(msg => (
-                <Box key={msg.id} p={3} bg="gray.700" borderRadius="md" shadow="sm">
-                  <Text fontWeight="bold">You:</Text>
-                  <Text>{msg.userMessage}</Text>
-                  <Text fontWeight="bold" mt={2}>Bot:</Text>
-                  <Text>{msg.botResponse}</Text>
-                </Box>
+                <VStack key={msg.id} align="stretch">
+                  <Flex justify="flex-end">
+                    <Box p={3} bg="gray.600" maxW="70%" borderRadius="md" shadow="sm">
+                      <Text fontWeight="bold">You:</Text>
+                      <Text mt={2}>{msg.userMessage}</Text>
+                    </Box>
+                  </Flex>
+                  <Flex justify="flex-start">
+                    <Box p={3} bg="blue.700" maxW="70%" borderRadius="md" shadow="sm">
+                      <Text fontWeight="bold" >Bot:</Text>
+                      <Text mt={2}>{msg.botResponse}</Text>
+                    </Box>
+                  </Flex>
+                </VStack>
               ))}
+
               <div ref={scrollRef} />
             </VStack>
           ) : (
@@ -112,6 +120,12 @@ export default function ChatPage() {
               placeholder="Type your message..."
               bg="white"
               color="black"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey && message.trim() && selectedBotId) {
+                  e.preventDefault();
+                  handleSend(selectedBotId);
+                }
+              }}
             />
             <Button
               onClick={() => selectedBotId && handleSend(selectedBotId)}
@@ -123,6 +137,59 @@ export default function ChatPage() {
           </Flex>
         </Box>
       </Flex>
+      {open && (
+        <Box
+          position="fixed"
+          top="0"
+          left="0"
+          w="100vw"
+          h="100vh"
+          bg="blackAlpha.700"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          zIndex="999"
+        >
+          <Box bg="gray.800" p={6} borderRadius="md" width="90%" maxW="400px" color="white">
+            <Text fontSize="xl" fontWeight="bold" mb={4}>Create a New Bot</Text>
+
+            <Box mb={4}>
+              <Text mb={1}>Name</Text>
+              <Input
+                placeholder="Bot name"
+                value={newBotName}
+                onChange={(e) => setNewBotName(e.target.value)}
+                bg="white"
+                color="black"
+              />
+            </Box>
+
+            <Box mb={6}>
+              <Text mb={1}>Context</Text>
+              <Textarea
+                placeholder='e.g. "You are a polite sales assistant"'
+                value={newBotContext}
+                onChange={(e) => setNewBotContext(e.target.value)}
+                bg="white"
+                color="black"
+              />
+            </Box>
+
+            <Flex justify="flex-end" gap={2}>
+              <Button variant="outline" colorPalette="red" onClick={onClose}>Cancel</Button>
+              <Button
+                colorPalette="teal"
+                onClick={handleCreateBot}
+                loading={creatingBot}
+              >
+                Create
+              </Button>
+            </Flex>
+          </Box>
+        </Box>
+      )}
+
     </Flex>
+
   );
 }
