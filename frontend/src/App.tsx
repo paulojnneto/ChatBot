@@ -1,10 +1,12 @@
-import { ChatView } from './views/ChatView';
+import { Box } from '@chakra-ui/react';
+import ChatPage from './views/ChatPage';
 
 function App() {
-
   return (
-    <ChatView />
-  )
+    <Box>
+      <ChatPage />
+    </Box>
+  );
 }
 
 export default App;
