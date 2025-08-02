@@ -1,7 +1,10 @@
 import { ChatView } from './views/ChatView';
 
 function App() {
-  return <ChatView />;
+
+  return (
+    <ChatView />
+  )
 }
 
 export default App;
