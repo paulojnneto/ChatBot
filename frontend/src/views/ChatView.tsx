@@ -1,4 +1,7 @@
 import { useChatBot } from '../hooks/useChatBot';
+import { Button } from "@chakra-ui/react"
+import { GoArrowUp } from "react-icons/go";
+
 
 export const ChatView = () => {
   const {
@@ -19,7 +22,6 @@ export const ChatView = () => {
       <select
         onChange={(e) => handleBotSelect(parseInt(e.target.value))}
         value={selectedBotId || ''}
-        className='font-bold'
       >
         <option value="" disabled >Selecione um bot</option>
         {bots.map(bot => (
@@ -42,9 +44,9 @@ export const ChatView = () => {
         placeholder="Digite sua pergunta..."
         style={{ width: '80%' }}
       />
-      <button onClick={handleSend} disabled={loading}>
-        {loading ? 'Enviando...' : 'Enviar'}
-      </button>
+      <Button loading={loading} onClick={handleSend} colorPalette="green" variant="solid">
+        <GoArrowUp /> Send
+      </Button>
     </div>
   );
 };
