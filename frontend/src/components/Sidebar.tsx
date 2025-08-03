@@ -12,6 +12,7 @@ export function Sidebar({ bots, selectedBotId, onSelectBot, onCreate, creatingBo
             colorPalette="teal"
             onClick={() => onSelectBot(bot.id)}
             whiteSpace="normal"
+            data-selected={selectedBotId === bot.id}
           >
             {bot.name}
           </Button>
@@ -22,4 +23,4 @@ export function Sidebar({ bots, selectedBotId, onSelectBot, onCreate, creatingBo
       </VStack>
     </Box>
   );
-}
+} 
