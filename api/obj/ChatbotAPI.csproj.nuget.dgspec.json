@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dev\\HCapital\\ChatBot\\api\\ChatbotAPI.csproj": {}
+    "C:\\Dev\\HCapital\\ChatBot\\api\\ChatBotAPI.csproj": {}
   },
   "projects": {
-    "C:\\Dev\\HCapital\\ChatBot\\api\\ChatbotAPI.csproj": {
+    "C:\\Dev\\HCapital\\ChatBot\\api\\ChatBotAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\HCapital\\ChatBot\\api\\ChatbotAPI.csproj",
-        "projectName": "ChatbotAPI",
-        "projectPath": "C:\\Dev\\HCapital\\ChatBot\\api\\ChatbotAPI.csproj",
+        "projectUniqueName": "C:\\Dev\\HCapital\\ChatBot\\api\\ChatBotAPI.csproj",
+        "projectName": "ChatBotAPI",
+        "projectPath": "C:\\Dev\\HCapital\\ChatBot\\api\\ChatBotAPI.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\HCapital\\ChatBot\\api\\obj\\",
         "projectStyle": "PackageReference",
@@ -45,11 +45,19 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[8.5.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.18, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[9.0.7, )"
             },
@@ -70,6 +78,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.3, )"
             }
           },
           "imports": [

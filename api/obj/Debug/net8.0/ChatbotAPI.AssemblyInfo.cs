@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("ChatbotAPI")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("ChatBotAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2409d405e0f3bf4a6c71172283a6d77b37534d5a")]
-[assembly: System.Reflection.AssemblyProductAttribute("ChatbotAPI")]
-[assembly: System.Reflection.AssemblyTitleAttribute("ChatbotAPI")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+877a160f89c0678e3aa70566a5d5d2e416e0e533")]
+[assembly: System.Reflection.AssemblyProductAttribute("ChatBotAPI")]
+[assembly: System.Reflection.AssemblyTitleAttribute("ChatBotAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
