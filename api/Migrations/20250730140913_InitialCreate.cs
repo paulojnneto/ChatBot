@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ChatbotAPI.Migrations
+namespace ChatBotAPI.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

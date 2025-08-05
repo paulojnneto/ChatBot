@@ -17,7 +17,7 @@ describe('useChatBot', () => {
   ];
 
   const mockMessages: Message[] = [
-    { id: 1, botId: 1, userMessage: 'Hello', botResponse: 'Hi!' },
+    { id: 1, userMessage: 'Hello', botResponse: 'Hi!', timestamp: '2023-10-01T12:00:00Z' },
   ];
 
   beforeEach(() => {
@@ -58,7 +58,6 @@ describe('useChatBot', () => {
     await act(() => result.current.handleSend(1));
 
     expect(api.post).toHaveBeenCalledWith('/Message', {
-      botId: 1,
       userMessage: 'Hello',
     });
     expect(result.current.message).toBe('');

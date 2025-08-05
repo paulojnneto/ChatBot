@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ChatbotAPI.Migrations
+namespace ChatBotAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250730140913_InitialCreate")]
