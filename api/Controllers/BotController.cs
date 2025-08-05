@@ -1,3 +1,6 @@
+using ChatBotAPI.Data;
+using ChatBotAPI.DTOs;
+using ChatBotAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,3 +1,5 @@
+using ChatBotAPI.Data;
+using ChatBotAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=chatbot.db")); // ou configure via appsettings
 builder.Services.AddSingleton<OpenAIService>();
+builder.Services.AddScoped<IOpenAIService, OpenAIService>();
 
 builder.Services.AddCors(options =>
 {
@@ -42,7 +45,7 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

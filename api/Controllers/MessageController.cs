@@ -1,14 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ChatBotAPI.Data;
+using ChatBotAPI.DTOs;
+using ChatBotAPI.Models;
+
+namespace ChatBotAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class MessageController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
-    private readonly OpenAIService _openAi;
+    private readonly IOpenAIService _openAi;
 
-    public MessageController(ApplicationDbContext context, OpenAIService openAi)
+    public MessageController(ApplicationDbContext context, IOpenAIService openAi)
     {
         _context = context;
         _openAi = openAi;

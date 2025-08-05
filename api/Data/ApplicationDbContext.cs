@@ -1,4 +1,7 @@
+using ChatBotAPI.Models;
 using Microsoft.EntityFrameworkCore;
+
+namespace ChatBotAPI.Data;
 
 public class ApplicationDbContext : DbContext
 {

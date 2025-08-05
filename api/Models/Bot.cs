@@ -1,3 +1,5 @@
+namespace ChatBotAPI.Models;
+
 public class Bot
 {
     public int Id { get; set; }

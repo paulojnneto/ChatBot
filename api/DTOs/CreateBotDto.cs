@@ -1,3 +1,5 @@
+namespace ChatBotAPI.DTOs;
+
 public class CreateBotDto
 {
     public string Name { get; set; }
